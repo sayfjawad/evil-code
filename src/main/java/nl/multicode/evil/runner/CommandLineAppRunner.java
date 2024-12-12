@@ -16,6 +16,6 @@ public class CommandLineAppRunner implements CommandLineRunner {
     @Override
     public void run(String... args) {
         System.out.println("Calling myInnocentMethod:");
-        System.out.println("Result after EvilAspect: " + myClass.myInnocentMethod());
+        System.out.println(myClass.myInnocentMethod());
     }
 }
