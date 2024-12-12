@@ -3,7 +3,7 @@ package nl.multicode.evil;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 
-import nl.multicode.evil.redefine.EvilCode;
+import nl.multicode.evil.agent.SetupAgent;
 
 public class Main {
 
@@ -13,8 +13,9 @@ public class Main {
         var instance = new MyClass();
         System.out.println("Before redefinition: " + instance.myInnocentMethod());
 
-        // Do evil stuff!!
-        EvilCode.execute();
+        // Do some covert stuff!!
+        SetupAgent.execute();
+
         // After redefinition
         System.out.println("After redefinition: " + instance.myInnocentMethod());
 
