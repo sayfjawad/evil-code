@@ -1,7 +1,6 @@
 package nl.multicode.evil.runner;
 
-
-import nl.multicode.evil.service.MyClass;
+import nl.multicode.evil.MyClass;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,8 +14,8 @@ public class CommandLineAppRunner implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        System.out.println("Before AOP redefinition: " + new MyClass().myInnocentMethod());
-        System.out.println("After AOP redefinition: " + myClass.myInnocentMethod());
+    public void run(String... args) {
+        System.out.println("Calling myInnocentMethod:");
+        System.out.println("Result after EvilAspect: " + myClass.myInnocentMethod());
     }
 }

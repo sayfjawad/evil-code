@@ -1,19 +1,26 @@
-
 package nl.multicode.evil.aspect;
 
-import nl.multicode.evil.annotation.EvilInnocentOverride;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 
+// Make sure this aspect is a bean
+import org.springframework.stereotype.Component;
+
 @Aspect
+@Component
 public class EvilAspect {
 
-    // Using an around advice to intercept the method call
-    @Around("@annotation(evilInnocentOverride)")
-    public Object intercept(ProceedingJoinPoint pjp, EvilInnocentOverride evilInnocentOverride) throws Throwable {
-        // Instead of calling pjp.proceed() and returning the original,
-        // we return the evil result directly.
-        return "Evil code hard at work MOA HA HA!!! -> Overridden by AOP";
+    @Around("execution(* nl.multicode.evil.MyClass.myInnocentMethod(..))")
+    public Object intercept(ProceedingJoinPoint pjp) throws Throwable {
+        // You can do something "evil" here. For demonstration:
+        System.out.println("EvilAspect: Intercepting call...");
+
+        // If you want, you could alter the result:
+        Object result = pjp.proceed(); // call the original method
+        System.out.println("Result before EvilAspect: "+result);
+
+        // Return an overridden result to show infiltration
+        return "Evil Overridden with MOA HA HA HAAA!";
     }
 }
