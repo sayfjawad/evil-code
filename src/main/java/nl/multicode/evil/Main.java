@@ -7,9 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Before redefinition
         var instance = new MyClass();
-
         System.out.println(instance.myInnocentMethod());
     }
 }
